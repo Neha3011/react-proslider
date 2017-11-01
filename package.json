@@ -1,0 +1,39 @@
+{
+  "name": "react-proslider",
+  "version": "0.0.2",
+  "description": "React slider",
+  "main": "dist/react-proslider.cjs.js",
+  "jsnext:main": "dist/react-proslider.esm.js",
+  "module": "dist/react-proslider.esm.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:js": "kcd-scripts build --bundle",
+    "build:css": "node-sass src/styles/ -o dist/ && postcss dist/*.css --use autoprefixer -d dist/ && postcss dist/*.css --use cssnano -d dist/",
+    "build": "npm run build:js && npm run build:css"
+  },
+  "keywords": [
+    "react",
+    "react-slider",
+    "slider",
+    "input range",
+    "uislider",
+    "react-proslider"
+  ],
+  "author": "Neha Singh",
+  "license": "ISC",
+  "peerDependencies": {
+    "react": ">=15"
+  },
+  "dependencies": {
+    "classnames": "2.2.5",
+    "get-size": "2.0.2"
+  },
+  "devDependencies": {
+    "kcd-scripts": "0.27.0",
+    "node-sass": "4.5.3",
+    "autoprefixer": "7.1.6",
+    "cssnano": "3.10.0",
+    "postcss-cli": "4.1.1",
+    "react": "16.0.0"
+  }
+}

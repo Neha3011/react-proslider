@@ -2,10 +2,16 @@ import React from 'react';
 import classNames from 'classnames';
 import getSize from 'get-size';
 
+const defaultSliderConfig = {
+  'max': 50,
+  'min': 1,
+  'thumbSize': 15
+};
 class Slider extends React.Component {
 
   state = {
-    'rangeLength': 200
+    'rangeLength': 200,
+    'value': this.props.sliderConfig ? this.props.sliderConfig.value : 20
   };
 
   componentDidMount() {
@@ -19,14 +25,16 @@ class Slider extends React.Component {
     return el ? getSize(el).width : 0;
   };
 
-  onSlide = (min, max, limitType, e) => {
+  onSlide = (e) => {
     const value = Number(e.target.value);
+    this.setState({
+      value
+    });
     this.props.onSlide({ value });
   };
 
   getSliderConfiguration = () => {
-    const sliderConfig = this.props.sliderConfig;
-    const value = sliderConfig.value;
+    const sliderConfig = this.props.sliderConfig || defaultSliderConfig;
     const min = sliderConfig.min;
     const max = sliderConfig.max;
 
@@ -34,7 +42,7 @@ class Slider extends React.Component {
     const rangeLength = this.state.rangeLength;
 
     const diff = (max - min) > 0 ? (max - min) : 1;
-    const leftPosition = parseFloat((value - min) / diff).toFixed(1) * (rangeLength - thumbSize);
+    const leftPosition = parseFloat((this.state.value - min) / diff).toFixed(1) * (rangeLength - thumbSize);
     const leftWidth = (rangeLength - thumbSize) - leftPosition + 1; // Add 1px to avoid showing original range width
     return {
       leftPosition,
@@ -43,9 +51,7 @@ class Slider extends React.Component {
   };
 
   render() {
-    const action = this.props.action;
-    const sliderConfig = this.props.sliderConfig;
-    const value = sliderConfig.value;
+    const sliderConfig = this.props.sliderConfig || defaultSliderConfig;
     const min = sliderConfig.min;
     const max = sliderConfig.max;
     const {leftPosition, leftWidth} = this.getSliderConfiguration();
@@ -71,11 +77,11 @@ class Slider extends React.Component {
                 'focus': !this.props.showLeftBar
               })}
               type="range"
-              value={value}
+              value={this.state.value}
               min={min}
               max={max}
               step="1"
-              onInput={this.onSlide.bind(this, min, max)}
+              onInput={this.onSlide}
               onMouseUp={this.props.onChangeSlider}
           />
         </div>

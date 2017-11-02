@@ -1,6 +1,6 @@
 {
   "name": "react-proslider",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A slider component in react",
   "main": "dist/react-proslider.cjs.js",
   "jsnext:main": "dist/react-proslider.esm.js",

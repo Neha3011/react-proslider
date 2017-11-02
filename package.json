@@ -1,7 +1,7 @@
 {
   "name": "react-proslider",
   "version": "0.0.2",
-  "description": "React slider",
+  "description": "A slider component in react",
   "main": "dist/react-proslider.cjs.js",
   "jsnext:main": "dist/react-proslider.esm.js",
   "module": "dist/react-proslider.esm.js",
@@ -10,6 +10,10 @@
     "build:js": "kcd-scripts build --bundle",
     "build:css": "node-sass src/styles/ -o dist/ && postcss dist/*.css --use autoprefixer -d dist/ && postcss dist/*.css --use cssnano -d dist/",
     "build": "npm run build:js && npm run build:css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Neha3011/react-proslider.git"
   },
   "keywords": [
     "react",
@@ -21,6 +25,10 @@
   ],
   "author": "Neha Singh",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Neha3011/react-proslider/issues"
+  },
+  "homepage": "https://github.com/Neha3011/react-proslider#readme",
   "peerDependencies": {
     "react": ">=15"
   },
